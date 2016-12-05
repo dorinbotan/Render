@@ -19,7 +19,7 @@ void drawLine(int x0, int y0, int x1, int y1, TGAImage &image, TGAColor color) {
         float t = (x - x0) / (float)(x1 - x0);
         int y = y0  * (1. - t) + y1 * t;
         if(steep) {
-            image.set(x, y, color);
+            image.set(y, x, color);
         } else {
             image.set(x, y, color);
         }
