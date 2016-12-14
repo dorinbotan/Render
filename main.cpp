@@ -13,6 +13,14 @@ Model *model = NULL;
 const int width  = 200;
 const int height = 200;
 
+void drawPoint(int x, int y, TGAImage &image, TGAColor color)
+{
+    image.set(x, y + 1, color);
+    image.set(x + 1, y, color);
+    image.set(x, y - 1, color);
+    image.set(x - 1, y, color);
+}
+
 int main(int argc, char** argv) {
     TGAImage image(width, height, TGAImage::RGB);
 
@@ -35,8 +43,21 @@ int main(int argc, char** argv) {
     //     }
     // }
 
+    drawPoint(100, 100, image, white);
+    drawPoint(50, 50, image, white);
+    drawPoint(50, 100, image, white);
+    drawPoint(100, 50, image, white);
+    drawPoint(150, 100, image, white);
+    drawPoint(100, 150, image, white);
+    drawPoint(150, 50, image, white);
+    drawPoint(50, 150, image, white);
+    drawPoint(150, 150, image, white);
+
     drawRect(0, 0, width - 1, height - 1, image, white);
-    drawLine(20, 20, 100, 100, image, red);
+    drawLine(0, 0, 100, 50, image, red);
+    drawLine(0, 0, 50, 100, image, green);
+    drawLine(50, 0, 150, 100, image, blue);
+    drawLine(0, 50, 100, 150, image, blue);
 
     // image.flip_vertically();
 	image.write_tga_file("output.tga");
