@@ -53,11 +53,15 @@ int main(int argc, char** argv) {
     drawPoint(50, 150, image, white);
     drawPoint(150, 150, image, white);
 
-    drawRect(0, 0, width - 1, height - 1, image, white);
-    drawLine(0, 0, 100, 50, image, red);
-    drawLine(0, 0, 50, 100, image, green);
-    drawLine(50, 0, 150, 100, image, blue);
-    drawLine(0, 50, 100, 150, image, blue);
+    drawSquare(0, 0, width - 1, image, white);
+
+    // drawLine(0, 0, 100, 50, image, red);
+    // drawLine(0, 0, 50, 100, image, green);
+    // drawLine(100, 100, 90, 5, image, blue);
+
+    drawTriangle(50, 180, 100, 10, 30, 80, image, red);
+
+    drawCircle(100, 100, 50, image, red);
 
     // image.flip_vertically();
 	image.write_tga_file("output.tga");

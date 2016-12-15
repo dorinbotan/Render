@@ -7,25 +7,26 @@ void drawLine(int x0, int y0, int x1, int y1, TGAImage &image, TGAColor color) {
     int width = abs(x0 - x1);
     int height = abs(y0 - y1);
 
+    if(x0 > x1) {
+        swap(x0, x1);
+        swap(y0, y1);
+    }
+
     if(width > height)
     {
-        for(int x = x0; x <= x1; x++)
+        for(int x = x0; x < x1; x++)
         {
-            int y = ((x + y0) * height / width);
+            int y = y0 + ((x - x0) * height / width);
             image.set(x, y, color);
         }
-
-        cout << 1 << std::endl;
     }
     else
     {
-        for(int y = y0; y <= y1; y++)
+        for(int y = y0; y < y1; y++)
         {
-            int x = ((y + x0) * width / height);
+            int x = x0 + ((y - y0) * width / height);
             image.set(x, y, color);
         }
-
-        cout << 2 << std::endl;
     }
     
 
@@ -83,6 +84,13 @@ void drawRect(int x, int y, int width, int height, TGAImage &image, TGAColor col
 void drawSquare(int x, int y, int width, TGAImage &image, TGAColor color)
 {
     drawRect(x, y, width, width, image, color);
+}
+
+void drawTriangle(int x0, int y0, int x1, int y1, int x2, int y2, TGAImage &image, TGAColor color)
+{
+    drawLine(x0, y0, x1, y1, image, color);
+    drawLine(x1, y1, x2, y2, image, color);
+    drawLine(x2, y2, x0, y0, image, color);
 }
 
 void drawCircle(int x1, int y1, int r, TGAImage &image, TGAColor color) {
